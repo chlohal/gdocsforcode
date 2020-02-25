@@ -1,0 +1,197 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    padding: 0px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow: hidden;
+}
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; 
+}
+#topbar {
+    width: 100vw;
+    background: #303030;
+    min-height: 2em;
+    color: #eee;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 0.3em;
+}
+#topbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+#topbar ul li {
+    display: inline-block;
+}
+#not-topbar {
+    width: 100vw;
+    max-height: 100vh;
+    flex-shrink: 1;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 70% 30%;
+}
+#heirarchy {
+    grid-column: 1;
+    width: 20vw;
+    height: 100%;
+    max-height: min-content;
+    background-color: aqua;
+    overflow: auto;
+    padding: 1em;
+}
+#heirarchy ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 0.2em;
+    padding-left: 0.2em;
+    border-left: 2px solid white; 
+    overflow: visible;
+}
+#heirarchy > ul {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+li.subfolder {
+    cursor: pointer;
+}
+li.subfolder::before {
+    content: "▼";
+}
+#open-editors {
+    width: 100%;
+    background: limegreen;
+    padding: 0;
+    margin: 0;
+    min-height: min-content;
+    list-style-type: none;
+    padding: 0.2em;
+    padding-bottom: 0;
+    overflow-x:auto;
+    white-space: nowrap;
+    scrollbar-color: #1119 transparent; 
+    scrollbar-width: thin;
+}
+#open-editors:empty::before {
+    content: " ";
+    white-space:nowrap;
+    padding-left: 10px;
+}
+#open-editors li {
+    display: inline-block;
+    background: palegreen;
+    padding: 2px;
+    margin-left: 2px;
+    cursor: pointer;
+}
+#open-editors li .del-button {
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    display: inline-block;
+    background-color: whitesmoke;
+    border-radius: 0.4em;
+    margin-left: 0.1em;
+    font-weight: bold;
+}
+.del-button span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.del-button span::before {
+    content: "\d7";
+    line-height: 0.75em;
+}
+#open-editors li.active {
+    background: paleturquoise;
+}
+#code-editor {
+    width: 100%;
+    flex-grow: 1;
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+}
+.code-load,.code-nothing {
+    position: absolute;
+    width: 100%;
+    background-color: #333;
+    height: 100%;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.code-load.errored::before {
+    animation: none;
+    filter: invert(27%) sepia(51%) saturate(2500%) hue-rotate(340deg) brightness(204%) contrast(50%);
+}
+.code-load.errored::after {
+    content: "There was an error. Please try again in a little bit.";
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #eee;
+    font-size: 2em;
+}
+.code-load::before {
+    content: "";
+    width: 10em;
+    height: 10em;
+    background-size: cover;
+    border-radius: 1em;
+    animation: loading 1.6s infinite;
+    background-image: url("/icon-keyboard.svg");
+    filter: invert(27%) sepia(51%) saturate(2500%) hue-rotate(100deg) brightness(204%) contrast(50%);
+}
+.code-nothing {
+    z-index: 0;
+    color: #eee;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.code-nothing h3 {
+    font-size: 2em;
+}
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(70%);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes bg-slide {
+    0% {background-position-x: 0vw; }
+    50% {}
+    100% {background-position-x: 30vw; }
+    }
+#build {
+    grid-column: 1 / 3;
+    background: goldenrod;
+    height: 100%;
+}
+#code {
+    grid-column: 2;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+}

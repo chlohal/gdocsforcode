@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>Code</title>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="/codepage.css">
+
+        <script src="/editor.js"></script>
+        <script src="/dependencies.js"></script>
+        <script src="/codeload.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/BrowserFS/1.4.3/browserfs.min.js" id="script-bfs-load"></script>
+        <script src="/doppio.js"></script>
+    </head>
+    <body>
+        <main>
+            <div id="topbar">
+                <a>File</a>
+            </div>
+            <div id="not-topbar">
+                <nav id="heirarchy">
+                    <ul id="heirarchy-inner"></ul>
+                </nav>
+                <div id="code">
+                    <ul id="open-editors"></ul>
+                    <pre id="code-editor" class="editor-parent java">
+                        <div class="code-load" id="code-is-loading"></div>
+                        <div class="code-nothing">
+                            <h3>You don't have any files open!</h3>
+                            <p>To open a file, you can click on a file name on the left panel.</p>
+                        </div>
+                    </pre>
+                </div>
+                <div id="build">
+                    <output id="output-log"></output>
+                </div>
+            </div>
+        </main>
+
+
+    </body>
+</html>
